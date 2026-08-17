@@ -1,0 +1,1721 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Baby Shower & Gender Reveal</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+<link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@400;500;600;700&family=Chewy&display=swap" rel="stylesheet">
+
+<style>
+
+*{
+    box-sizing:border-box;
+    margin:0;
+    padding:0;
+}
+
+html,body{
+    width:100%;
+    min-height:100%;
+}
+
+body{
+    min-height:100vh;
+    font-family:'Baloo 2',cursive;
+    color:#5d514c;
+    background:#fffaf8;
+    overflow-x:hidden;
+}
+
+.book{
+    width:100%;
+    min-height:100vh;
+}
+
+.page{
+    position:relative;
+    width:100%;
+    min-height:100vh;
+
+    display:none;
+    flex-direction:column;
+    align-items:center;
+    text-align:center;
+
+    overflow:hidden;
+
+    background:
+        radial-gradient(
+            circle at 15% 18%,
+            rgba(157,214,245,.28) 0 7%,
+            transparent 8%
+        ),
+        radial-gradient(
+            circle at 86% 18%,
+            rgba(255,170,196,.30) 0 8%,
+            transparent 9%
+        ),
+        linear-gradient(
+            145deg,
+            #ffeaf3 0%,
+            #fffdf7 42%,
+            #e9f8ff 100%
+        );
+}
+
+.page.active{
+    display:flex;
+    animation:pageIn .65s ease both;
+}
+
+@keyframes pageIn{
+    from{
+        opacity:0;
+        transform:scale(.95) translateY(15px);
+    }
+
+    to{
+        opacity:1;
+        transform:scale(1) translateY(0);
+    }
+}
+
+
+/* =========================
+   BUNTING
+========================= */
+
+.bunting{
+    position:absolute;
+    top:0;
+    left:-3%;
+    width:106%;
+    height:80px;
+
+    display:flex;
+    justify-content:center;
+    gap:3px;
+
+    z-index:3;
+
+    animation:buntingDrop 1s ease both;
+}
+
+.flag{
+    width:43px;
+    height:48px;
+
+    clip-path:polygon(
+        0 0,
+        100% 0,
+        50% 100%
+    );
+
+    margin-top:8px;
+}
+
+.flag:nth-child(odd){
+    background:#70c8ec;
+}
+
+.flag:nth-child(even){
+    background:#f38daf;
+}
+
+.string{
+    position:absolute;
+    top:8px;
+    width:100%;
+    height:35px;
+
+    border-top:2px solid #5c554f;
+    border-radius:50%;
+}
+
+.hearts{
+    position:absolute;
+    top:45px;
+    width:100%;
+
+    display:flex;
+    justify-content:space-around;
+
+    font-size:20px;
+    color:#555;
+
+    z-index:4;
+}
+
+
+/* =========================
+   BALLOONS
+========================= */
+
+.balloon-cluster{
+    position:absolute;
+    top:82px;
+    width:145px;
+    height:145px;
+    z-index:2;
+}
+
+.balloon-cluster.left{
+    left:-15px;
+
+    animation:
+        balloonLeft 1s ease .2s both,
+        balloonFloat 4s ease-in-out 1.3s infinite;
+}
+
+.balloon-cluster.right{
+    right:-15px;
+
+    animation:
+        balloonRight 1s ease .3s both,
+        balloonFloat 4.3s ease-in-out 1.4s infinite;
+}
+
+.balloon{
+    position:absolute;
+
+    width:65px;
+    height:78px;
+
+    border-radius:
+        50%
+        50%
+        48%
+        48%;
+
+    box-shadow:
+        inset -9px -10px 15px rgba(0,0,0,.08);
+}
+
+.balloon:after{
+    content:"";
+
+    position:absolute;
+
+    bottom:-7px;
+    left:50%;
+
+    transform:translateX(-50%);
+
+    width:9px;
+    height:9px;
+
+    border-radius:50%;
+    background:inherit;
+}
+
+.b1{
+    left:5px;
+    top:25px;
+    background:#79bce8;
+}
+
+.b2{
+    left:45px;
+    top:0;
+    background:#ffd8a8;
+}
+
+.b3{
+    left:76px;
+    top:34px;
+    background:#f3a8c2;
+}
+
+.b4{
+    left:38px;
+    top:67px;
+    background:#a9d7f2;
+}
+
+.right .b1{
+    background:#f6b6ce;
+}
+
+.right .b2{
+    background:#ffd4ad;
+}
+
+.right .b3{
+    background:#7fc7ec;
+}
+
+.right .b4{
+    background:#f5c5d9;
+}
+
+
+/* =========================
+   TEDDY
+========================= */
+
+.teddy{
+    position:absolute;
+    top:145px;
+
+    font-size:64px;
+
+    z-index:4;
+}
+
+.teddy.left{
+    left:8px;
+
+    animation:
+        sidePop .9s ease .4s both,
+        teddyFloat 3.5s ease-in-out 1.3s infinite;
+}
+
+.teddy.right{
+    right:8px;
+
+    animation:
+        sidePop .9s ease .5s both,
+        teddyFloat 3.7s ease-in-out 1.4s infinite;
+}
+
+
+/* =========================
+   CONTENT
+========================= */
+
+.content{
+    width:min(90%,650px);
+
+    z-index:5;
+
+    margin-top:130px;
+
+    padding:
+        10px
+        20px
+        150px;
+}
+
+.cover-content{
+    margin-top:185px;
+}
+
+
+/* =========================
+   TEXT
+========================= */
+
+.kicker{
+    color:#64b9dc;
+
+    font-size:
+        clamp(20px,4vw,30px);
+
+    font-weight:700;
+
+    line-height:1.1;
+
+    animation:textReveal .9s ease .5s both;
+}
+
+.title{
+    font-family:'Chewy',cursive;
+
+    color:#a87a56;
+
+    font-size:
+        clamp(48px,10vw,86px);
+
+    line-height:.95;
+
+    text-shadow:
+        1px 2px 0 rgba(91,70,56,.18);
+
+    margin:12px 0;
+
+    animation:titleReveal 1s ease .8s both;
+}
+
+.subtitle{
+    color:#63b9dd;
+
+    font-size:
+        clamp(20px,4vw,30px);
+
+    font-weight:600;
+
+    animation:textReveal .9s ease 1.2s both;
+}
+
+.page-heading{
+    font-family:'Chewy',cursive;
+
+    font-size:
+        clamp(45px,9vw,75px);
+
+    color:#a47a59;
+
+    text-shadow:
+        1px 2px 0 rgba(80,60,50,.15);
+
+    margin-bottom:15px;
+
+    animation:textReveal .8s ease .2s both;
+}
+
+
+/* =========================
+   BABY
+========================= */
+
+.baby{
+    font-size:85px;
+
+    margin-bottom:12px;
+
+    animation:
+        babyPop .9s ease .2s both,
+        babyFloat 3.5s ease 1s infinite;
+}
+
+
+/* =========================
+   BUTTON
+========================= */
+
+button,
+.location-button{
+
+    border:0;
+
+    cursor:pointer;
+
+    touch-action:manipulation;
+
+    font-family:'Baloo 2',cursive;
+
+    font-size:19px;
+
+    font-weight:700;
+
+    color:white;
+
+    background:#69bfe1;
+
+    padding:11px 24px;
+
+    border-radius:999px;
+
+    box-shadow:
+        0 5px 0 rgba(75,145,175,.25);
+
+    transition:.2s;
+
+    text-decoration:none;
+
+    display:inline-block;
+}
+
+button:hover,
+.location-button:hover{
+    transform:translateY(-3px);
+}
+
+button:active,
+.location-button:active{
+    transform:translateY(1px);
+}
+
+.enter-button{
+    margin-top:32px;
+
+    min-width:220px;
+
+    font-size:22px;
+
+    padding:14px 30px;
+
+    animation:
+        buttonPop .8s ease 1.5s both,
+        buttonPulse 2.2s ease-in-out 2.3s infinite;
+}
+
+.back{
+    background:#ee9bb8;
+
+    box-shadow:
+        0 5px 0 rgba(190,105,135,.22);
+}
+
+
+/* =========================
+   CARD
+========================= */
+
+.card{
+    width:min(100%,560px);
+
+    background:rgba(255,255,255,.65);
+
+    border-radius:28px;
+
+    padding:22px 25px;
+
+    border:
+        2px dashed rgba(160,130,105,.35);
+
+    box-shadow:
+        0 10px 30px rgba(100,100,100,.08);
+
+    animation:cardReveal .9s ease .3s both;
+}
+
+
+/* =========================
+   EVENT
+========================= */
+
+.event-icon{
+    font-size:65px;
+    margin-bottom:8px;
+
+    animation:babyPop .9s ease .2s both;
+}
+
+.event-card p{
+    font-size:22px;
+    line-height:1.45;
+}
+
+.event-date{
+    color:#63b9dd;
+
+    font-size:32px;
+    font-weight:700;
+
+    margin-top:8px;
+}
+
+.event-time{
+    color:#6b625c;
+    margin-top:4px;
+}
+
+.event-place{
+    color:#63b9dd;
+
+    font-size:28px;
+    font-weight:700;
+
+    margin-top:8px;
+}
+
+.event-place22{
+    color:#6b625c;
+
+    font-size:-29px;
+    font-weight:400;
+    line-height:0.1;
+
+}
+
+.location-image{
+    width: min(100%, 450px);
+    margin-top: 12px;
+    margin-left: auto;
+    margin-right: auto;
+    border-radius: 18px;
+    display: block;
+    object-fit: cover;
+}
+
+
+.event-note{
+    margin-top:15px;
+
+    font-size:18px !important;
+
+    color:#81766f;
+}
+
+.location-button{
+    margin-top:15px;
+}
+
+
+/* =========================
+   DRESS CODE
+========================= */
+
+.dress-grid{
+    display:grid;
+
+    grid-template-columns:1fr 1fr;
+
+    gap:18px;
+
+    margin-top:18px;
+}
+
+.dress{
+    border-radius:25px;
+
+    padding:18px 10px;
+
+    background:rgba(255,255,255,.65);
+}
+
+.dress .emoji{
+    font-size:58px;
+}
+
+.dress h3{
+    font-size:27px;
+    margin:5px 0;
+}
+
+.pink h3{
+    color:#e982a8;
+}
+
+.blue h3{
+    color:#459dd0;
+}
+
+.dress p{
+    font-size:19px;
+    line-height:1.2;
+}
+
+
+/* =========================
+   GIFTS
+========================= */
+
+.gifts{
+    list-style:none;
+
+    text-align:left;
+
+    margin:15px auto 0;
+
+    width:min(100%,430px);
+
+    font-size:22px;
+
+    line-height:1.5;
+}
+
+.gifts li{
+    margin-bottom:5px;
+}
+
+.gifts li:before{
+    content:"🎁";
+    margin-right:10px;
+}
+
+
+/* =========================
+   THANK YOU
+========================= */
+
+.thanks{
+    font-size:
+        clamp(22px,4.5vw,30px);
+
+    line-height:1.3;
+}
+
+
+/* =========================
+   NAVIGATION
+========================= */
+
+.nav{
+    position:absolute;
+
+    bottom:
+        max(
+            16px,
+            env(safe-area-inset-bottom)
+        );
+
+    left:0;
+
+    width:100%;
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+    gap:10px;
+
+    z-index:20;
+
+    padding:0 10px;
+}
+
+.dots{
+    display:flex;
+    gap:7px;
+}
+
+.dot{
+    width:9px;
+    height:9px;
+
+    border-radius:50%;
+
+    background:#d8d0cb;
+}
+
+.dot.active{
+    background:#69bfe1;
+}
+
+
+/* =========================
+   ANIMATIONS
+========================= */
+
+@keyframes buntingDrop{
+    from{
+        opacity:0;
+        transform:translateY(-40px);
+    }
+
+    to{
+        opacity:1;
+        transform:translateY(0);
+    }
+}
+
+@keyframes balloonLeft{
+    from{
+        opacity:0;
+        transform:translateX(-80px) scale(.75);
+    }
+
+    to{
+        opacity:1;
+        transform:translateX(0) scale(1);
+    }
+}
+
+@keyframes balloonRight{
+    from{
+        opacity:0;
+        transform:translateX(80px) scale(.75);
+    }
+
+    to{
+        opacity:1;
+        transform:translateX(0) scale(1);
+    }
+}
+
+@keyframes balloonFloat{
+    0%,100%{
+        transform:translateY(0);
+    }
+
+    50%{
+        transform:translateY(-9px);
+    }
+}
+
+@keyframes sidePop{
+    from{
+        opacity:0;
+        transform:scale(.35);
+    }
+
+    70%{
+        opacity:1;
+        transform:scale(1.08);
+    }
+
+    to{
+        opacity:1;
+        transform:scale(1);
+    }
+}
+
+@keyframes teddyFloat{
+    0%,100%{
+        margin-top:0;
+    }
+
+    50%{
+        margin-top:-7px;
+    }
+}
+
+@keyframes textReveal{
+    from{
+        opacity:0;
+        transform:translateY(22px);
+    }
+
+    to{
+        opacity:1;
+        transform:translateY(0);
+    }
+}
+
+@keyframes titleReveal{
+    from{
+        opacity:0;
+        transform:translateY(35px) scale(.92);
+    }
+
+    to{
+        opacity:1;
+        transform:translateY(0) scale(1);
+    }
+}
+
+@keyframes cardReveal{
+    from{
+        opacity:0;
+        transform:translateY(35px) scale(.94);
+    }
+
+    to{
+        opacity:1;
+        transform:translateY(0) scale(1);
+    }
+}
+
+@keyframes babyPop{
+    from{
+        opacity:0;
+        transform:scale(.35) rotate(-8deg);
+    }
+
+    70%{
+        opacity:1;
+        transform:scale(1.12) rotate(3deg);
+    }
+
+    to{
+        opacity:1;
+        transform:scale(1) rotate(0);
+    }
+}
+
+@keyframes babyFloat{
+    0%,100%{
+        transform:translateY(0);
+    }
+
+    50%{
+        transform:translateY(-8px);
+    }
+}
+
+@keyframes buttonPop{
+    from{
+        opacity:0;
+        transform:translateY(25px) scale(.75);
+    }
+
+    to{
+        opacity:1;
+        transform:translateY(0) scale(1);
+    }
+}
+
+@keyframes buttonPulse{
+    0%,100%{
+        box-shadow:
+            0 6px 0 rgba(75,145,175,.25);
+    }
+
+    50%{
+        box-shadow:
+            0 6px 0 rgba(75,145,175,.25),
+            0 0 0 8px rgba(105,191,225,.12);
+    }
+}
+
+
+/* =========================
+   MOBILE
+========================= */
+
+@media(max-width:520px){
+
+    .content{
+        margin-top:120px;
+        padding:
+            10px
+            12px
+            150px;
+    }
+
+    .cover-content{
+        margin-top:180px;
+    }
+
+    .balloon-cluster{
+        transform:scale(.78);
+        transform-origin:top;
+    }
+
+    .teddy{
+        font-size:48px;
+        top:150px;
+    }
+
+    .dress-grid{
+        gap:10px;
+    }
+
+    .dress{
+        padding:13px 6px;
+    }
+
+    .dress .emoji{
+        font-size:45px;
+    }
+
+    .dress h3{
+        font-size:23px;
+    }
+
+    .dress p{
+        font-size:16px;
+    }
+
+    .gifts{
+        font-size:19px;
+    }
+
+    .event-date{
+        font-size:28px;
+    }
+
+    .event-place{
+        font-size:24px;
+    }
+
+    .nav{
+        gap:5px;
+    }
+
+    .nav button{
+        font-size:15px;
+        padding:9px 14px;
+    }
+}
+
+</style>
+</head>
+
+<body>
+
+
+<!-- ==========================================
+     AUDIO FILES
+
+     Put all these files in the SAME folder
+     as index.html.
+=========================================== -->
+
+<audio id="pageAudio" preload="auto"></audio>
+
+
+<div class="book">
+
+
+<!-- ==================================================
+     PAGE 1 — YOU ARE INVITED
+================================================== -->
+
+<section class="page active" id="page1">
+
+    <div class="bunting">
+        <div class="string"></div>
+
+        <span class="flag"></span>
+        <span class="flag"></span>
+        <span class="flag"></span>
+        <span class="flag"></span>
+        <span class="flag"></span>
+        <span class="flag"></span>
+        <span class="flag"></span>
+        <span class="flag"></span>
+        <span class="flag"></span>
+        <span class="flag"></span>
+    </div>
+
+    <div class="hearts">
+        ♡　♡　♡　♡　♡　♡　♡
+    </div>
+
+
+    <div class="balloon-cluster left">
+        <span class="balloon b1"></span>
+        <span class="balloon b2"></span>
+        <span class="balloon b3"></span>
+        <span class="balloon b4"></span>
+    </div>
+
+    <div class="balloon-cluster right">
+        <span class="balloon b1"></span>
+        <span class="balloon b2"></span>
+        <span class="balloon b3"></span>
+        <span class="balloon b4"></span>
+    </div>
+
+
+    <div class="teddy left">🧸</div>
+    <div class="teddy right">🧸</div>
+
+
+    <div class="content cover-content">
+
+        <div class="baby">
+            👶🏻
+        </div>
+
+        <div class="kicker">
+            You Are
+        </div>
+
+        <div class="title">
+            INVITED!
+        </div>
+
+        <div class="subtitle">
+            To a very special celebration
+        </div>
+
+
+        <button
+            class="enter-button"
+            onclick="openInvitation()"
+        >
+            OPEN INVITATION ♡
+        </button>
+
+    </div>
+
+</section>
+
+
+
+<!-- ==================================================
+     PAGE 2 — MAIN TITLE
+================================================== -->
+
+<section class="page" id="page2">
+
+    <div class="bunting">
+        <div class="string"></div>
+
+        <span class="flag"></span>
+        <span class="flag"></span>
+        <span class="flag"></span>
+        <span class="flag"></span>
+        <span class="flag"></span>
+        <span class="flag"></span>
+        <span class="flag"></span>
+        <span class="flag"></span>
+        <span class="flag"></span>
+        <span class="flag"></span>
+    </div>
+
+    <div class="hearts">
+        ♡　♡　♡　♡　♡　♡　♡
+    </div>
+
+
+    <div class="balloon-cluster left">
+        <span class="balloon b1"></span>
+        <span class="balloon b2"></span>
+        <span class="balloon b3"></span>
+        <span class="balloon b4"></span>
+    </div>
+
+    <div class="balloon-cluster right">
+        <span class="balloon b1"></span>
+        <span class="balloon b2"></span>
+        <span class="balloon b3"></span>
+        <span class="balloon b4"></span>
+    </div>
+
+
+    <div class="teddy left">🧸</div>
+    <div class="teddy right">🧸</div>
+
+
+    <div class="content cover-content">
+
+        <div class="kicker">
+            Please join us for our
+        </div>
+
+        <div class="title">
+            BABY SHOWER
+            <br>
+            &amp; GENDER REVEAL
+        </div>
+
+        <div class="subtitle">
+            A special celebration awaits...
+        </div>
+
+    </div>
+
+
+    <div class="nav">
+
+        <button class="back" onclick="prevPage()">
+            ← Back
+        </button>
+
+        <div class="dots">
+            <span class="dot active"></span>
+            <span class="dot"></span>
+            <span class="dot"></span>
+            <span class="dot"></span>
+            <span class="dot"></span>
+        </div>
+
+        <button onclick="nextPage()">
+            Next ➜
+        </button>
+
+    </div>
+
+</section>
+
+
+
+<!-- ==================================================
+     PAGE 3 — DATE & LOCATION
+================================================== -->
+
+<section class="page" id="page3">
+
+    <div class="bunting">
+        <div class="string"></div>
+
+        <span class="flag"></span>
+        <span class="flag"></span>
+        <span class="flag"></span>
+        <span class="flag"></span>
+        <span class="flag"></span>
+        <span class="flag"></span>
+        <span class="flag"></span>
+        <span class="flag"></span>
+        <span class="flag"></span>
+        <span class="flag"></span>
+    </div>
+
+
+    <div class="content">
+
+        <div class="event-icon">
+            🩵👶🏻🎀
+        </div>
+
+        <div class="page-heading">
+            SAVE THE DATE
+        </div>
+
+
+        <div class="card event-card">
+
+            <p>
+                We would love for you
+                to celebrate with us!
+            </p>
+
+            <div class="event-date">
+                September 26, 2026
+            </div>
+
+            <div class="event-time">
+                Saturday • 9:30 AM – 12:00 PM
+            </div>
+
+            <div class="event-place">
+                Jollibee Bacoor Blvd
+            </div>
+
+            <h4 class="event-place22">
+                (Near Bacoor City Hall)
+            </h4>
+
+            <img src="location.jpg" class="location-image" alt="Location">
+
+            <br>
+
+            <p class="event-note">
+                Come and share this beautiful
+                moment with us as we discover
+                whether it's a little boy or girl! 💗💙
+            </p>
+
+        </div>
+
+    </div>
+
+
+    <div class="nav">
+
+        <button class="back" onclick="prevPage()">
+            ← Back
+        </button>
+
+        <div class="dots">
+            <span class="dot"></span>
+            <span class="dot"></span>
+            <span class="dot active"></span>
+            <span class="dot"></span>
+            <span class="dot"></span>
+        </div>
+
+        <button onclick="nextPage()">
+            Next ➜
+        </button>
+
+    </div>
+
+</section>
+
+
+
+<!-- ==================================================
+     PAGE 4 — DRESS CODE
+================================================== -->
+
+<section class="page" id="page4">
+
+    <div class="bunting">
+        <div class="string"></div>
+
+        <span class="flag"></span>
+        <span class="flag"></span>
+        <span class="flag"></span>
+        <span class="flag"></span>
+        <span class="flag"></span>
+        <span class="flag"></span>
+        <span class="flag"></span>
+        <span class="flag"></span>
+        <span class="flag"></span>
+        <span class="flag"></span>
+    </div>
+
+
+    <div class="content">
+
+        <div class="page-heading">
+            DRESS CODE
+        </div>
+
+
+        <div class="card">
+
+            <p style="
+                font-size:22px;
+            ">
+                What should you wear?
+                <br>
+                Come dressed according
+                to your guess!
+            </p>
+
+
+            <div class="dress-grid">
+
+                <div class="dress pink">
+
+                    <div class="emoji">
+                        🎀
+                    </div>
+
+                    <h3>
+                        WEAR PINK
+                    </h3>
+
+                    <p>
+                        if you think
+                        <br>
+                        it's a <b>GIRL</b> 💗
+                    </p>
+
+                </div>
+
+
+                <div class="dress blue">
+
+                    <div class="emoji">
+                        🩵
+                    </div>
+
+                    <h3>
+                        WEAR BLUE
+                    </h3>
+
+                    <p>
+                        if you think
+                        <br>
+                        it's a <b>BOY</b> 💙
+                    </p>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <div class="nav">
+
+        <button class="back" onclick="prevPage()">
+            ← Back
+        </button>
+
+        <div class="dots">
+            <span class="dot"></span>
+            <span class="dot"></span>
+            <span class="dot"></span>
+            <span class="dot active"></span>
+            <span class="dot"></span>
+        </div>
+
+        <button onclick="nextPage()">
+            Next ➜
+        </button>
+
+    </div>
+
+</section>
+
+
+
+<!-- ==================================================
+     PAGE 5 — GIFT IDEAS
+================================================== -->
+
+<section class="page" id="page5">
+
+    <div class="bunting">
+        <div class="string"></div>
+
+        <span class="flag"></span>
+        <span class="flag"></span>
+        <span class="flag"></span>
+        <span class="flag"></span>
+        <span class="flag"></span>
+        <span class="flag"></span>
+        <span class="flag"></span>
+        <span class="flag"></span>
+        <span class="flag"></span>
+        <span class="flag"></span>
+    </div>
+
+
+    <div class="content">
+
+        <div class="page-heading">
+            GIFT IDEAS
+        </div>
+
+
+        <div class="card">
+
+            <p style="
+                font-size:20px;
+                line-height:1.3;
+            ">
+
+                Your love, presence and prayers
+                are all that we request.
+
+                <br>
+
+                But if you wish to give a gift,
+                here's what we suggest:
+
+            </p>
+
+            <br>
+
+
+            <ul class="gifts">
+
+                <li>Organic Baby Wipes</li>
+
+                
+
+                <li>Rascals Premium Tape Diapers (S-M)</li>
+
+                <li>Mustela Products</li>
+
+                
+
+                <li>Tiny Buds Gentle Baby Cologne</li>
+
+                
+
+                <li>Pigeon Feeding Bottles</li>
+
+                
+
+            </ul>
+
+        </div>
+
+    </div>
+
+
+    <div class="nav">
+
+        <button class="back" onclick="prevPage()">
+            ← Back
+        </button>
+
+        <div class="dots">
+            <span class="dot"></span>
+            <span class="dot"></span>
+            <span class="dot"></span>
+            <span class="dot"></span>
+            <span class="dot active"></span>
+            <span class="dot"></span>
+        </div>
+
+        <button onclick="nextPage()">
+            Next ➜
+        </button>
+
+    </div>
+
+</section>
+
+
+
+<!-- ==================================================
+     PAGE 6 — THANK YOU
+================================================== -->
+
+<section class="page" id="page6">
+
+    <div class="bunting">
+        <div class="string"></div>
+
+        <span class="flag"></span>
+        <span class="flag"></span>
+        <span class="flag"></span>
+        <span class="flag"></span>
+        <span class="flag"></span>
+        <span class="flag"></span>
+        <span class="flag"></span>
+        <span class="flag"></span>
+        <span class="flag"></span>
+        <span class="flag"></span>
+    </div>
+
+
+    <div class="content" style="margin-top:180px;">
+
+        <div class="baby">
+            👶🏻💗💙
+        </div>
+
+
+        <div class="page-heading">
+            THANK YOU!
+        </div>
+
+
+        <div class="card">
+
+            <p class="thanks">
+
+                Thank you so much
+                for celebrating
+                this special moment with us.
+
+                <br><br>
+
+                We can't wait to see you there
+                and find out together...
+
+                <br><br>
+
+                <b>
+                    BOY OR GIRL?
+                </b>
+
+                🎀🩵
+
+            </p>
+
+        </div>
+
+    </div>
+
+
+    <div class="nav">
+
+        <button class="back" onclick="prevPage()">
+            ← Back
+        </button>
+
+        <div class="dots">
+            <span class="dot"></span>
+            <span class="dot"></span>
+            <span class="dot"></span>
+            <span class="dot"></span>
+            <span class="dot active"></span>
+        </div>
+
+        <button onclick="goToPage(1)">
+            ↻ Start Again
+        </button>
+
+    </div>
+
+</section>
+
+
+</div>
+
+
+
+<script>
+
+/* ==========================================
+   PAGE SETTINGS
+========================================== */
+
+let currentPage = 1;
+
+const totalPages = 6;
+
+
+/* ==========================================
+   AUDIO
+========================================== */
+
+const pageAudio =
+    document.getElementById("pageAudio");
+
+
+/*
+    Put these files in the same folder
+    as index.html.
+*/
+
+const pageAudios = {
+
+    1: "invite.mp3",
+
+    2: "main.mp3",
+
+    3: "location.mp3",
+
+    4: "dresscode2.mp3",
+
+    5: "gifts.mp3",
+
+    6: "thankyou.mp3"
+
+};
+
+
+/* ==========================================
+   PLAY PAGE AUDIO
+========================================== */
+
+function playPageAudio(pageNumber){
+
+    const audioFile =
+        pageAudios[pageNumber];
+
+    if(!audioFile){
+        return;
+    }
+
+
+    /*
+        Stop the previous audio.
+    */
+
+    pageAudio.pause();
+
+    pageAudio.currentTime = 0;
+
+
+    /*
+        Load the new audio.
+    */
+
+    pageAudio.src = audioFile;
+
+    pageAudio.load();
+
+
+    /*
+        Play it.
+    */
+
+    pageAudio.play().catch(function(error){
+
+        console.log(
+            "Audio waiting for user interaction:",
+            error
+        );
+
+    });
+
+}
+
+
+/* ==========================================
+   OPEN INVITATION
+========================================== */
+
+function openInvitation(){
+
+    /*
+        This click gives the browser permission
+        to play audio.
+
+        Start the MAIN TITLE page.
+    */
+
+    showPage(2);
+
+}
+
+
+/* ==========================================
+   SHOW PAGE
+========================================== */
+
+function showPage(number){
+
+    if(number < 1){
+        number = 1;
+    }
+
+    if(number > totalPages){
+        number = totalPages;
+    }
+
+
+    /*
+        Hide all pages and show
+        only the selected page.
+    */
+
+    document
+        .querySelectorAll(".page")
+        .forEach(function(page,index){
+
+            page.classList.toggle(
+                "active",
+                index === number - 1
+            );
+
+        });
+
+
+    currentPage = number;
+
+
+    /*
+        Play the audio for this page.
+    */
+
+    playPageAudio(currentPage);
+
+
+    window.scrollTo({
+        top:0,
+        behavior:"smooth"
+    });
+
+}
+
+
+/* ==========================================
+   NEXT PAGE
+========================================== */
+
+function nextPage(){
+
+    if(currentPage < totalPages){
+
+        showPage(currentPage + 1);
+
+    }
+
+}
+
+
+/* ==========================================
+   PREVIOUS PAGE
+========================================== */
+
+function prevPage(){
+
+    if(currentPage > 1){
+
+        showPage(currentPage - 1);
+
+    }
+
+}
+
+
+/* ==========================================
+   SPECIFIC PAGE
+========================================== */
+
+function goToPage(number){
+
+    showPage(number);
+
+}
+
+
+/* ==========================================
+   KEYBOARD
+========================================== */
+
+document.addEventListener(
+    "keydown",
+    function(event){
+
+        if(event.key === "ArrowRight"){
+            nextPage();
+        }
+
+        if(event.key === "ArrowLeft"){
+            prevPage();
+        }
+
+    }
+);
+
+</script>
+
+</body>
+</html>
